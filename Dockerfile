@@ -16,15 +16,15 @@ RUN hf download \
     tokenizer_config.json \
     special_tokens_map.json \
     vocab.txt \
+    onnx/model.onnx \
     --local-dir /minilm/models/all-MiniLM-L6-v2
 
 # Copy pyproject.toml and app files to the correct location
 COPY pyproject.toml /minilm/pyproject.toml
-COPY README.md /minilm/README.md
 COPY ./src minilm/src
 
 # Set the working directory
-WORKDIR /minilm/src/app
+WORKDIR /minilm
 
 # Create and activate a virtual environment using uv tool
 RUN uv venv --python 3.12
@@ -33,4 +33,4 @@ ENV PATH="/app/.venv/bin:$PATH"
 # Install dependencies from pyproject.toml
 RUN uv sync
 
-ENTRYPOINT ["uvicorn", "main:app"]
+ENTRYPOINT ["uvicorn", "--app-dir src/app","main:app"]

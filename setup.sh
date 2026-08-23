@@ -31,6 +31,7 @@ hf download \
     tokenizer_config.json \
     special_tokens_map.json \
     vocab.txt \
+    onnx/model.onnx \
     --local-dir models/all-MiniLM-L6-v2
 
 # Install dependencies from pyproject.toml
