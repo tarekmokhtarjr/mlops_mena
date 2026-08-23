@@ -28,10 +28,20 @@ Run pre-commit
 uvicorn --app-dir src/app main:app
 ```
 
-## Run app using docker
-Run pre-commit
+## Run app using docker & docker compose
+Make sure docker & docker compose are installed:
+- docker: https://docs.docker.com/engine/install/
+- docker compose: https://docs.docker.com/compose/install/
+
+Build image first
 ```sh
-uvicorn --app-dir src/app main:app
+docker build -t embedding_minilm .
+```
+
+then run using docker compose
+
+```sh
+docker compose up -d
 ```
 ## Testing
 Use this command to run unit tests
