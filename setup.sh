@@ -39,7 +39,7 @@ uv sync
 
 # Install dev group dependencies in pyproject.toml
 echo "Installing dev dependencies..."
-uv sync --groupdev
+uv sync --group dev
 
 # Install pre-commit hooks using uv run pre-commit install
 echo "Installing pre-commit hooks..."
