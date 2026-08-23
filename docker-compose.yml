@@ -1,0 +1,10 @@
+services:
+    name: embedding_minilm
+    image: embedding_minilm
+    volumes:
+      - ./src/model_containerization:/app/src
+      - ./test:/app/test
+      - ./pyproject.toml:/app/pyproject.toml
+      - ./check_minilm.py:/app/check_minilm.py
+      - ./embed.py:/app/embed.py
+    working_dir: /app
