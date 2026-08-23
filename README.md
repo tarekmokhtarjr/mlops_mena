@@ -28,3 +28,15 @@ Run pre-commit
 ```sh
 uvicorn --app-dir src/app main:app
 ```
+## Testing
+Use this command to run unit tests
+```sh
+uv run pytest test \
+    --cov=src/app \
+    --cov-report=term-missing \
+    --cov-report=html \
+    --cov-report=html:cov_report \
+    --cov-config .coveragerc
+```
+
+This will generate coverage report which could be accessed in the generated cov_report folder, also html test results could be found in the generated folder report_output.
