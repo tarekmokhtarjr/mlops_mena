@@ -1,7 +1,15 @@
 services:
-    name: embedding_minilm
+  minilm:
     image: embedding_minilm
+    ports:
+      - "8000:8000"
     volumes:
-      - ./src/model_containerization:/app/src
-      - ./pyproject.toml:/app/pyproject.toml
-    working_dir: /app
+      - ./src:/minilm/src/
+      - ./pyproject.toml:/minilm/pyproject.toml
+    working_dir: /minilm
+    networks:
+      - minilm-net
+
+networks:
+  minilm-net:
+    driver: bridge

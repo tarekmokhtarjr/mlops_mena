@@ -28,9 +28,9 @@ WORKDIR /minilm
 
 # Create and activate a virtual environment using uv tool
 RUN uv venv --python 3.12
-ENV PATH="/app/.venv/bin:$PATH"
+ENV PATH="/minilm/.venv/bin:$PATH"
 
 # Install dependencies from pyproject.toml
 RUN uv sync
 
-ENTRYPOINT ["uvicorn", "--app-dir src/app","main:app"]
+CMD ["uvicorn", "--app-dir", "src/app", "main:app", "--host", "0.0.0.0", "--port", "8000"]
